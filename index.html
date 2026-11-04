@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMBING - Education & Career Development Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bimbing: {
+                            blue: '#1E50D6',
+                            sky: '#00A3FF',
+                            yellow: '#FFB800',
+                            dark: '#0F172A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-bimbing-sky selection:text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Brand -->
+                <a href="#home" class="flex items-center gap-3">
+                    <img src="images/logo.png" alt="BIMBING Logo" class="h-10 w-auto object-contain" onerror="this.src='https://via.placeholder.com/150x50?text=BIMBING'">
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-7 text-sm font-semibold text-slate-700">
+                    <a href="#home" class="hover:text-bimbing-blue transition-colors">Home</a>
+
+                    <!-- Dropdown: Tentang Bimbing -->
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 hover:text-bimbing-blue py-2 transition-colors">
+                            Tentang Bimbing. <i class="fa-solid fa-chevron-down text-xs ml-1 text-slate-400 group-hover:text-bimbing-blue transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-0 mt-1 w-56 bg-white border border-slate-100 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
+                            <a href="#profil" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Profil BIMBING</a>
+                            <a href="#visi-misi" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Visi & Misi</a>
+                            <a href="#study" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">BIMBING STUDY</a>
+                            <a href="#career" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">BIMBING CAREER</a>
+                            <a href="#metode" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Metode Pendampingan</a>
+                        </div>
+                    </div>
+
+                    <!-- Menu: Mentors -->
+                    <a href="#mentors" class="hover:text-bimbing-blue transition-colors">Mentors</a>
+
+                    <!-- Dropdown: Pusat Media -->
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 hover:text-bimbing-blue py-2 transition-colors">
+                            Pusat Media <i class="fa-solid fa-chevron-down text-xs ml-1 text-slate-400 group-hover:text-bimbing-blue transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-0 mt-1 w-52 bg-white border border-slate-100 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
+                            <a href="#pengumuman" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Pengumuman</a>
+                            <a href="#siaran-pers" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Siaran Pers</a>
+                            <a href="#galeri" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Galeri Kegiatan</a>
+                            <a href="#berita" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Berita</a>
+                        </div>
+                    </div>
+
+                    <!-- Action: Register Now (Highlight Biru Cerah) -->
+                    <div class="relative group">
+                        <button class="bg-bimbing-sky hover:bg-sky-500 text-white font-bold px-6 py-2.5 rounded-full shadow-md shadow-sky-200 hover:shadow-lg transition-all flex items-center gap-2">
+                            Register Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                        <div class="absolute right-0 mt-1 w-56 bg-white border border-slate-100 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="#daftar-study" onclick="openRegisterModal('BIMBING STUDY')" class="block px-4 py-2.5 hover:bg-sky-50 text-slate-800 hover:text-bimbing-blue">
+                                <span class="font-bold text-xs block text-bimbing-sky">PROGRAM SISWA / GAP YEAR</span>
+                                BIMBING STUDY
+                            </a>
+                            <div class="border-t border-slate-100 my-1"></div>
+                            <a href="#daftar-career" onclick="openRegisterModal('BIMBING CAREER')" class="block px-4 py-2.5 hover:bg-blue-50 text-slate-800 hover:text-bimbing-blue">
+                                <span class="font-bold text-xs block text-bimbing-blue">MAHASISWA / FRESH GRADUATE</span>
+                                BIMBING CAREER
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-bimbing-blue focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-5 space-y-4">
+            <a href="#home" class="block font-semibold text-slate-700 py-1" onclick="toggleMobileMenu()">Home</a>
+            
+            <div class="space-y-1">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Tentang Bimbing.</span>
+                <a href="#profil" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Profil BIMBING</a>
+                <a href="#visi-misi" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Visi & Misi</a>
+                <a href="#study" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">BIMBING STUDY</a>
+                <a href="#career" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">BIMBING CAREER</a>
+                <a href="#metode" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Metode Pendampingan</a>
+            </div>
+
+            <a href="#mentors" class="block font-semibold text-slate-700 py-1" onclick="toggleMobileMenu()">Mentors</a>
+
+            <div class="space-y-1">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pusat Media</span>
+                <a href="#pengumuman" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Pengumuman</a>
+                <a href="#siaran-pers" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Siaran Pers</a>
+                <a href="#galeri" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Galeri Kegiatan</a>
+                <a href="#berita" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Berita</a>
+            </div>
+
+            <div class="pt-2">
+                <button onclick="openRegisterModal('BIMBING Program'); toggleMobileMenu();" class="w-full text-center bg-bimbing-sky text-white font-bold py-3 rounded-xl shadow-md">
+                    Register Now
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="pt-36 pb-20 lg:pt-44 lg:pb-32 bg-gradient-to-b from-sky-50/50 via-white to-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/70 text-bimbing-blue text-xs font-bold tracking-wide uppercase mb-6">
+                <i class="fa-solid fa-sparkles text-bimbing-yellow"></i> Education & Career Development Platform
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+                Jangan Bimbang, <br class="hidden sm:inline"><span class="text-bimbing-blue">Kita Bimbing.</span>
+            </h1>
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Platform layanan edukasi dan pengembangan karier terpercaya. Kami mendampingi setiap langkah penting perjalanan masa depanmu melalui pendekatan <em>Personal Mentoring</em> yang terarah dan adaptif.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openRegisterModal('BIMBING STUDY')" class="w-full sm:w-auto px-8 py-3.5 bg-bimbing-sky hover:bg-sky-500 text-white font-bold rounded-full shadow-lg shadow-sky-200 transition-all flex items-center justify-center gap-2">
+                    Daftar Sekarang <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <a href="#profil" class="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-full border border-slate-200 shadow-sm transition-all text-center">
+                    Pelajari Program
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TENTANG KAMI & PROFIL ================= -->
+    <section id="profil" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-bimbing-sky font-bold text-sm tracking-wider uppercase">Tentang Kami</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-6 leading-snug">
+                        Pendampingan Personal untuk Setiap Potensi yang Unik
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed mb-4">
+                        <strong>BIMBING</strong> merupakan platform layanan edukasi dan pengembangan karier yang hadir untuk mendampingi generasi muda dalam mempersiapkan setiap tahapan penting perjalanan masa depannya.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Berangkat dari pemahaman bahwa setiap individu memiliki potensi, kebutuhan, dan tujuan yang berbeda, kami menghadirkan layanan pendampingan yang personal, terarah, dan komprehensif melalui pendekatan <em>Personal Mentoring</em> baik secara <strong>Online</strong> maupun <strong>Offline</strong>.
+                    </p>
+                    <div class="p-4 bg-sky-50 border-l-4 border-bimbing-sky rounded-r-xl">
+                        <p class="text-sm font-semibold text-slate-700 italic">
+                            "Jangan Bimbang, Kita Bimbing. Karena setiap langkah menuju masa depan layak dipersiapkan dengan arah dan pendampingan yang tepat."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Nilai-Nilai Perusahaan -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-gem text-bimbing-blue"></i> Nilai-Nilai Perusahaan
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-bimbing-blue flex items-center justify-center font-bold text-xs shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Personalized</h4>
+                                <p class="text-xs text-slate-600">Memahami bahwa setiap individu memiliki kebutuhan dan tujuan yang unik.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-sky-100 text-bimbing-sky flex items-center justify-center font-bold text-xs shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Accessible</h4>
+                                <p class="text-xs text-slate-600">Menghadirkan layanan yang fleksibel dan mudah dijangkau secara luas.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 text-bimbing-yellow flex items-center justify-center font-bold text-xs shrink-0">3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Growth-Oriented</h4>
+                                <p class="text-xs text-slate-600">Mendorong perkembangan kompetensi dan potensi nyata individu.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0">4</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Trustworthy & Collaborative</h4>
+                                <p class="text-xs text-slate-600">Mengutamakan kredibilitas, profesionalisme, serta relasi kolaboratif antara mentor dan peserta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= VISI & MISI ================= -->
+    <section id="visi-misi" class="py-20 bg-slate-100/70 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-bimbing-blue font-bold text-sm tracking-wider uppercase">Arah & Komitmen</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Visi & Misi BIMBING</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Visi -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-sky-100 text-bimbing-sky flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Visi Kami</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Menjadi platform pendampingan pendidikan dan pengembangan karier yang terpercaya, inklusif, dan adaptif dalam membantu generasi muda mengembangkan potensi serta mempersiapkan masa depannya.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-2 text-xs text-bimbing-sky font-semibold">
+                        <i class="fa-solid fa-shield-check"></i> Komitmen Jangka Panjang
+                    </div>
+                </div>
+
+                <!-- Misi -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-bimbing-blue flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Misi Kami</h3>
+                    <ul class="space-y-4 text-sm text-slate-600 leading-relaxed">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-bimbing-blue mt-1 shrink-0"></i>
+                            <span>Menyelenggarakan pendampingan pendidikan dan pengembangan karier komprehensif melalui pendekatan mentoring personal yang disesuaikan dengan kebutuhan individu.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-bimbing-blue mt-1 shrink-0"></i>
+                            <span>Menghadirkan ekosistem pembelajaran adaptif didukung mentor profesional melalui integrasi pelayanan online dan offline.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-bimbing-blue mt-1 shrink-0"></i>
+                            <span>Mendorong kemandirian generasi muda dalam mencapai tujuan akademik dan profesional lewat evaluasi perkembangan berkelanjutan.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= DUA PROGRAM LAYANAN UTAMA ================= -->
+    <section class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-bimbing-sky font-bold text-sm tracking-wider uppercase">Program Unggulan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Dua Jalur Fokus Pendampingan</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Program 1: BIMBING STUDY -->
+                <div id="study" class="bg-gradient-to-br from-sky-50 to-white p-8 sm:p-10 rounded-3xl border border-sky-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="px-3.5 py-1.5 rounded-full bg-sky-200/60 text-sky-800 text-xs font-extrabold">PROGRAM 01</span>
+                            <i class="fa-solid fa-graduation-cap text-3xl text-bimbing-sky"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">BIMBING STUDY</h3>
+                        <p class="text-bimbing-sky font-bold text-sm mb-4">From School to Top University</p>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Pendampingan pendidikan komprehensif bagi siswa SMA/SMK dan lulusan <em>gap year</em> yang mempersiapkan diri menuju perguruan tinggi, khususnya Perguruan Tinggi Negeri (PTN).
+                        </p>
+                        <div class="space-y-2.5 text-xs text-slate-700 font-medium mb-8">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-sky"></i> Pemetaan kemampuan akademik & strategi belajar personal</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-sky"></i> Penguatan materi, latihan, dan simulasi seleksi PTN</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-sky"></i> Konsultasi pemilihan jurusan & kampus impian</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-sky"></i> Evaluasi berkala kesiapan menghadapi seleksi</div>
+                        </div>
+                    </div>
+                    <button onclick="openRegisterModal('BIMBING STUDY')" class="w-full py-3 bg-bimbing-sky hover:bg-sky-500 text-white font-bold rounded-xl shadow-md transition-all">
+                        Daftar BIMBING STUDY
+                    </button>
+                </div>
+
+                <!-- Program 2: BIMBING CAREER -->
+                <div id="career" class="bg-gradient-to-br from-blue-50 to-white p-8 sm:p-10 rounded-3xl border border-blue-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="px-3.5 py-1.5 rounded-full bg-blue-200/60 text-blue-800 text-xs font-extrabold">PROGRAM 02</span>
+                            <i class="fa-solid fa-briefcase text-3xl text-bimbing-blue"></i>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">BIMBING CAREER</h3>
+                        <p class="text-bimbing-blue font-bold text-sm mb-4">From Graduate to Professional</p>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Pendampingan pengembangan karier komprehensif bagi mahasiswa tingkat akhir dan <em>fresh graduate</em> yang mempersiapkan diri memasuki persaingan dunia profesional.
+                        </p>
+                        <div class="space-y-2.5 text-xs text-slate-700 font-medium mb-8">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-blue"></i> Pemetaan potensi, kompetensi & career planning</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-blue"></i> Penyusunan CV ATS-Friendly & portofolio profesional</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-blue"></i> Optimalisasi LinkedIn & strategi personal branding</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-bimbing-blue"></i> Simulasi wawancara kerja (*mock interview*) & asesmen</div>
+                        </div>
+                    </div>
+                    <button onclick="openRegisterModal('BIMBING CAREER')" class="w-full py-3 bg-bimbing-blue hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all">
+                        Daftar BIMBING CAREER
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= METODE PENDAMPINGAN ================= -->
+    <section id="metode" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-bimbing-sky font-bold text-sm tracking-wider uppercase">Framework Pendampingan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">End-to-End Personal Mentoring</h2>
+                <p class="text-slate-400 mt-4 text-sm">Lima tahapan terstruktur untuk memastikan kesiapan nyata setiap peserta.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <span class="text-bimbing-sky font-bold text-xl block mb-2">01</span>
+                    <h4 class="font-bold text-white text-base mb-2">Assessment & Discovery</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Mengidentifikasi potensi, kemampuan, kebutuhan, dan target spesifik peserta.</p>
+                </div>
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <span class="text-bimbing-sky font-bold text-xl block mb-2">02</span>
+                    <h4 class="font-bold text-white text-base mb-2">Personal Development Plan</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Menyusun *roadmap* dan rencana pendampingan yang disesuaikan secara personal.</p>
+                </div>
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <span class="text-bimbing-sky font-bold text-xl block mb-2">03</span>
+                    <h4 class="font-bold text-white text-base mb-2">Comprehensive Mentoring</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Melaksanakan proses pendampingan intensif bersama mentor berpengalaman.</p>
+                </div>
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <span class="text-bimbing-sky font-bold text-xl block mb-2">04</span>
+                    <h4 class="font-bold text-white text-base mb-2">Practice & Evaluation</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Mengaplikasikan keterampilan melalui latihan soal, simulasi seleksi, dan studi kasus.</p>
+                </div>
+                <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
+                    <span class="text-bimbing-sky font-bold text-xl block mb-2">05</span>
+                    <h4 class="font-bold text-white text-base mb-2">Final Readiness Check</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Mengevaluasi kesiapan mental dan kompetensi final sebelum hari seleksi/rekrutmen.</p>
+                </div>
+            </div>
+
+            <!-- Model Pelayanan -->
+            <div class="mt-12 bg-slate-800 p-8 rounded-3xl border border-slate-700 flex flex-col md:flex-row gap-8 items-center justify-between">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-2">Model Pelayanan Fleksibel</h4>
+                    <p class="text-sm text-slate-300">Tersedia dalam <strong>Online Mentoring</strong> (virtual class, konsultasi digital) & <strong>Offline Mentoring</strong> (tatap muka, workshop langsung).</p>
+                </div>
+                <div class="flex items-center gap-4 shrink-0">
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-xs font-semibold text-bimbing-sky border border-slate-600"><i class="fa-solid fa-laptop mr-2"></i>Online Class</span>
+                    <span class="px-4 py-2 bg-slate-700 rounded-xl text-xs font-semibold text-white border border-slate-600"><i class="fa-solid fa-users mr-2"></i>Offline Workshop</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MENTORS SECTION ================= -->
+    <section id="mentors" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-bimbing-blue font-bold text-sm tracking-wider uppercase">Daftar Pakar (Expert List)</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Mentor & Tenaga Ahli Profesional</h2>
+                <p class="text-slate-500 text-sm mt-3">Para praktisi dan alumni kampus ternama yang siap membimbing langkahmu.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Mentor 1 -->
+                <div class="bg-slate-50 rounded-3xl p-6 text-center border border-slate-200 hover:shadow-lg transition-all">
+                    <img src="images/fiona.jpg" alt="Fiona Alya" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-bimbing-sky mb-4 shadow-sm" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80'">
+                    <h4 class="font-extrabold text-slate-900 text-lg">Fiona Alya, S.Psi.</h4>
+                    <span class="text-xs font-semibold text-bimbing-blue block mb-3">Lead Mentor BIMBING STUDY</span>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Spesialis strategi seleksi masuk PTN, psikologi pendidikan, dan pemetaan minat bakat jurusan universitas top nasional.
+                    </p>
+                    <span class="inline-block px-3 py-1 bg-sky-100 text-bimbing-sky text-[11px] font-bold rounded-full">PTN & Scholarship Prep</span>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="bg-slate-50 rounded-3xl p-6 text-center border border-slate-200 hover:shadow-lg transition-all">
+                    <img src="images/adrian.jpg" alt="Adrian Ghezta" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-bimbing-blue mb-4 shadow-sm" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop&q=80'">
+                    <h4 class="font-extrabold text-slate-900 text-lg">Adrian Ghezta, M.M.</h4>
+                    <span class="text-xs font-semibold text-bimbing-sky block mb-3">Senior Career Consultant</span>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Praktisi HR profesional, reviewer CV ATS, dan mentor simulasi wawancara kerja untuk perusahaan multinasional.
+                    </p>
+                    <span class="inline-block px-3 py-1 bg-blue-100 text-bimbing-blue text-[11px] font-bold rounded-full">Career & Interview Coach</span>
+                </div>
+
+                <!-- Mentor 3 -->
+                <div class="bg-slate-50 rounded-3xl p-6 text-center border border-slate-200 hover:shadow-lg transition-all">
+                    <img src="images/nadia.jpg" alt="Nadia Putri" class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-amber-400 mb-4 shadow-sm" onerror="this.src='https://images.unsplash.com/photo-1580894732488-825528ca4c82?w=300&auto=format&fit=crop&q=80'">
+                    <h4 class="font-extrabold text-slate-900 text-lg">Nadia Putri, S.I.Kom.</h4>
+                    <span class="text-xs font-semibold text-amber-600 block mb-3">Personal Branding Specialist</span>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Fokus pada penguatan profil LinkedIn, portfolio visual, dan komunikasi percaya diri untuk fresh graduate.
+                    </p>
+                    <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-[11px] font-bold rounded-full">Branding & Communication</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PUSAT MEDIA ================= -->
+    <section id="pusat-media" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-bimbing-blue font-bold text-sm tracking-wider uppercase">Media Centre Official</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Pusat Informasi & Publikasi</h2>
+                <p class="text-slate-500 text-sm mt-3">Rilis berita resmi, siaran pers, pengumuman berkala, dan dokumentasi kegiatan BIMBING.</p>
+            </div>
+
+            <!-- Submenu 1: Pengumuman -->
+            <div id="pengumuman" class="mb-14">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-bimbing-sky"></i> Pengumuman Terbaru
+                </h3>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-full">ACTIVE BATCH</span>
+                        <h4 class="text-base font-bold text-slate-900 mt-1">Pembukaan Pendaftaran Batch I: BIMBING STUDY & BIMBING CAREER 2026/2027</h4>
+                        <p class="text-xs text-slate-500 mt-1">Batas akhir klaim beasiswa early bird dan seleksi berkas ditutup tanggal 20 November 2026.</p>
+                    </div>
+                    <button onclick="openRegisterModal('BIMBING STUDY')" class="px-5 py-2.5 bg-bimbing-blue text-white text-xs font-bold rounded-xl shrink-0">
+                        Ambil Kuota
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submenu 2 & 4: Siaran Pers & Berita -->
+            <div class="grid md:grid-cols-2 gap-8 mb-14">
+                <!-- Siaran Pers -->
+                <div id="siaran-pers" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-newspaper text-bimbing-blue"></i> Siaran Pers Resmi
+                    </h3>
+                    <article class="border-b border-slate-100 pb-4 mb-4">
+                        <span class="text-[11px] text-slate-400">04 November 2026 | Jakarta</span>
+                        <h4 class="text-sm font-bold text-slate-900 hover:text-bimbing-blue cursor-pointer mt-1">
+                            BIMBING Resmi Luncurkan Pendekatan End-to-End Personal Mentoring untuk Generasi Muda Indonesia
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                            Merespons tantangan adaptasi dunia perkuliahan dan dunia kerja modern, platform BIMBING mengintegrasikan layanan daring dan luring secara menyeluruh.
+                        </p>
+                    </article>
+                    <a href="#contact" class="text-xs font-bold text-bimbing-blue hover:underline">Unduh Media Kit & Press Release (.PDF) →</a>
+                </div>
+
+                <!-- Berita -->
+                <div id="berita" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-bimbing-yellow"></i> Berita & Artikel Edukasi
+                    </h3>
+                    <article class="border-b border-slate-100 pb-4 mb-4">
+                        <span class="text-[11px] text-slate-400">01 November 2026</span>
+                        <h4 class="text-sm font-bold text-slate-900 hover:text-bimbing-blue cursor-pointer mt-1">
+                            5 Hal yang Wajib Dipersiapkan Calon Mahasiswa Sebelum Mengikuti Seleksi Masuk PTN
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                            Bukan sekadar hafal materi, strategi pemetaan target jurusan dan konsistensi evaluasi mingguan menjadi kunci kelulusan.
+                        </p>
+                    </article>
+                    <a href="#berita" class="text-xs font-bold text-bimbing-sky hover:underline">Lihat Semua Artikel Edukasi →</a>
+                </div>
+            </div>
+
+            <!-- Submenu 3: Galeri Kegiatan -->
+            <div id="galeri">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-images text-indigo-500"></i> Galeri Dokumentasi Kegiatan
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="overflow-hidden rounded-2xl bg-slate-200 group relative">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=80" alt="Mentoring Tatap Muka" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
+                            <span class="text-white text-[11px] font-semibold">Offline Class Mentoring</span>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden rounded-2xl bg-slate-200 group relative">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&auto=format&fit=crop&q=80" alt="Career Workshop" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
+                            <span class="text-white text-[11px] font-semibold">CV & Career Workshop</span>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden rounded-2xl bg-slate-200 group relative">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&auto=format&fit=crop&q=80" alt="Virtual Class" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
+                            <span class="text-white text-[11px] font-semibold">Online Interactive Study</span>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden rounded-2xl bg-slate-200 group relative">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&auto=format&fit=crop&q=80" alt="Personal Consultation" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
+                            <span class="text-white text-[11px] font-semibold">1-on-1 Consultation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER / PR CONTACT ================= -->
+    <footer id="contact" class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <img src="images/logo.png" alt="BIMBING" class="h-9 w-auto brightness-0 invert mb-4" onerror="this.src='https://via.placeholder.com/150x50?text=BIMBING'">
+                    <p class="text-xs text-slate-400 max-w-sm leading-relaxed mb-4">
+                        Wadah pendampingan personal pendidikan ke PTN impian dan akselerasi kesiapan berkarier profesional. Jangan Bimbang, Kita Bimbing.
+                    </p>
+                    <div class="flex gap-4 text-white">
+                        <a href="https://www.instagram.com/kita.ajarin" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-bimbing-sky transition-colors"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="mailto:halo.bimbing@gmail.com" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-bimbing-sky transition-colors"><i class="fa-solid fa-envelope text-sm"></i></a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald-500 transition-colors"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Navigasi Utama</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#profil" class="hover:text-white">Tentang Bimbing</a></li>
+                        <li><a href="#study" class="hover:text-white">BIMBING STUDY</a></li>
+                        <li><a href="#career" class="hover:text-white">BIMBING CAREER</a></li>
+                        <li><a href="#mentors" class="hover:text-white">Daftar Pakar (Mentors)</a></li>
+                        <li><a href="#pusat-media" class="hover:text-white">Media Centre</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-4">Media Relations & Press</h5>
+                    <div class="text-xs space-y-2">
+                        <p><strong>Narahubung:</strong> Divisi Humas BIMBING</p>
+                        <p><strong>Email:</strong> halo.bimbing@gmail.com</p>
+                        <p><strong>Website:</strong> bimbing.my.id</p>
+                        <p><strong>Kampus Mitra:</strong> Universitas Pembangunan Jaya</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2026 BIMBING (PT Bimbing Edukasi Nusantara). All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Tugas Besar: Media Releases & Centres (Dosen Pengampu: Bu Reni Dyanasari)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODAL REGISTER (POPUP FORM) ================= -->
+    <div id="register-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="closeRegisterModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <span class="text-xs font-bold text-bimbing-sky uppercase tracking-wider">Formulir Pendaftaran</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-1 mb-2" id="modal-program-title">Register Program</h3>
+            <p class="text-xs text-slate-500 mb-6">Isi data singkat berikut, tim personal mentor BIMBING akan segera menghubungimu via WhatsApp.</p>
+
+            <form onsubmit="handleRegistration(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pilihan Program</label>
+                    <select id="form-program" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold focus:outline-none focus:border-bimbing-blue">
+                        <option value="BIMBING STUDY">BIMBING STUDY (Siswa SMA/SMK/Gap Year ke PTN)</option>
+                        <option value="BIMBING CAREER">BIMBING CAREER (Mahasiswa Akhir/Fresh Graduate)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap</label>
+                    <input type="text" required placeholder="Contoh: Fadliyan Noverio" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-bimbing-blue">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nomor WhatsApp Aktif</label>
+                    <input type="tel" required placeholder="08xxxxxxxxxx" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-bimbing-blue">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Asal Sekolah / Universitas</label>
+                    <input type="text" required placeholder="Contoh: Universitas Pembangunan Jaya" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-bimbing-blue">
+                </div>
+                <button type="submit" class="w-full py-3 bg-bimbing-sky hover:bg-sky-500 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+                    Kirim Pendaftaran
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Toggle Drawer Hamburger Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Modal Register Handler
+        function openRegisterModal(programName) {
+            const modal = document.getElementById('register-modal');
+            const title = document.getElementById('modal-program-title');
+            const select = document.getElementById('form-program');
+            
+            title.textContent = 'Daftar ' + programName;
+            if (programName.includes('CAREER')) {
+                select.value = 'BIMBING CAREER';
+            } else {
+                select.value = 'BIMBING STUDY';
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('register-modal').classList.add('hidden');
+        }
+
+        function handleRegistration(e) {
+            e.preventDefault();
+            alert('Terima kasih! Formulir pendaftaran program telah diterima. Personal Mentor BIMBING akan segera menghubungimu.');
+            closeRegisterModal();
+        }
+    </script>
+</body>
+</html>
