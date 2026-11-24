@@ -68,6 +68,7 @@
                             Pusat Media <i class="fa-solid fa-chevron-down text-xs ml-1 text-slate-400 group-hover:text-bimbing-blue transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute left-0 mt-1 w-52 bg-white border border-slate-100 rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
+                            <a href="#video" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Video Profil</a>
                             <a href="#pengumuman" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Pengumuman</a>
                             <a href="#siaran-pers" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Siaran Pers</a>
                             <a href="#galeri" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Galeri Kegiatan</a>
@@ -120,6 +121,7 @@
 
             <div class="space-y-1">
                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pusat Media</span>
+                <a href="#video" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Video Profil</a>
                 <a href="#pengumuman" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Pengumuman</a>
                 <a href="#siaran-pers" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Siaran Pers</a>
                 <a href="#galeri" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Galeri Kegiatan</a>
@@ -150,9 +152,39 @@
                 <button onclick="openRegisterModal('BIMBING STUDY')" class="w-full sm:w-auto px-8 py-3.5 bg-bimbing-sky hover:bg-sky-500 text-white font-bold rounded-full shadow-lg shadow-sky-200 transition-all flex items-center justify-center gap-2">
                     Daftar Sekarang <i class="fa-solid fa-arrow-right"></i>
                 </button>
+                <a href="#video" class="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-full border border-slate-200 shadow-sm transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-play text-bimbing-blue"></i> Tonton Video
+                </a>
                 <a href="#profil" class="w-full sm:w-auto px-8 py-3.5 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-full border border-slate-200 shadow-sm transition-all text-center">
                     Pelajari Program
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= VIDEO SHOWCASE SECTION ================= -->
+    <section id="video" class="py-20 bg-slate-50 border-t border-slate-200/70">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-bimbing-sky font-bold text-sm tracking-wider uppercase">Video Pengenalan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Kenali BIMBING Lebih Dekat</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-3">
+                    Putar video langsung di halaman ini untuk mengenal lebih jauh pendampingan dan program unggulan BIMBING.
+                </p>
+            </div>
+
+            <div class="bg-white p-3 sm:p-4 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/60">
+                <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-900">
+                    <iframe
+                        class="w-full h-full"
+                        src="https://www.youtube.com/embed/Gv8qd40uoTY?rel=0"
+                        title="Video Pengenalan BIMBING"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
