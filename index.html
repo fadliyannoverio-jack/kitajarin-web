@@ -27,6 +27,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        button, a[href], select, summary, [role="button"] { cursor: pointer; }
+        .faq-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.25s ease; }
+        .faq-item[data-open="true"] .faq-panel { grid-template-rows: 1fr; }
+        .faq-panel-inner { overflow: hidden; }
+        @media (prefers-reduced-motion: reduce) {
+            .faq-panel { transition: none; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-bimbing-sky selection:text-white">
@@ -75,6 +82,9 @@
                             <a href="#berita" class="block px-4 py-2 hover:bg-slate-50 hover:text-bimbing-blue">Berita</a>
                         </div>
                     </div>
+
+                    <!-- Menu: FAQ -->
+                    <a href="#faq" class="hover:text-bimbing-blue transition-colors">FAQ</a>
 
                     <!-- Action: Register Now (Highlight Biru Cerah) -->
                     <div class="relative group">
@@ -127,6 +137,8 @@
                 <a href="#galeri" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Galeri Kegiatan</a>
                 <a href="#berita" class="block pl-3 py-1 text-sm font-medium text-slate-600" onclick="toggleMobileMenu()">Berita</a>
             </div>
+
+            <a href="#faq" class="block font-semibold text-slate-700 py-1" onclick="toggleMobileMenu()">FAQ</a>
 
             <div class="pt-2">
                 <button onclick="openRegisterModal('BIMBING Program'); toggleMobileMenu();" class="w-full text-center bg-bimbing-sky text-white font-bold py-3 rounded-xl shadow-md">
@@ -324,7 +336,7 @@
                         </p>
                         <div class="space-y-3 text-sm text-slate-700 font-medium mb-8 leading-relaxed">
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-sky mt-1 shrink-0"></i><span>Pemetaan kemampuan akademik &amp; strategi belajar personal</span></div>
-                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-sky mt-1 shrink-0"></i><span>Penguatan materi, latihan soal, dan simulasi seleksi PTN</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-sky mt-1 shrink-0"></i><span>Pengembangan kemampuan akademik, latihan soal &amp; simulasi seleksi universitas/PTN</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-sky mt-1 shrink-0"></i><span>Konsultasi pemilihan jurusan &amp; kampus impian</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-sky mt-1 shrink-0"></i><span>Evaluasi berkala kesiapan menghadapi seleksi</span></div>
                         </div>
@@ -350,7 +362,7 @@
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-blue mt-1 shrink-0"></i><span>Pemetaan potensi, kompetensi &amp; <em>career planning</em></span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-blue mt-1 shrink-0"></i><span>Penyusunan CV ATS-Friendly &amp; portofolio profesional</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-blue mt-1 shrink-0"></i><span>Optimalisasi LinkedIn &amp; strategi <em>personal branding</em></span></div>
-                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-blue mt-1 shrink-0"></i><span>Simulasi wawancara kerja (<em>mock interview</em>) &amp; asesmen</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-bimbing-blue mt-1 shrink-0"></i><span>Simulasi wawancara kerja (<em>mock interview</em>), asesmen &amp; pengenalan proses rekrutmen</span></div>
                         </div>
                     </div>
                     <button onclick="openRegisterModal('BIMBING CAREER')" class="w-full py-3 bg-bimbing-blue hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all">
@@ -384,7 +396,7 @@
                 <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
                     <span class="text-bimbing-sky font-bold text-xl block mb-2">03</span>
                     <h4 class="font-bold text-white text-base mb-2">Comprehensive Mentoring</h4>
-                    <p class="text-[13px] text-slate-300 leading-relaxed">Melaksanakan proses pendampingan intensif bersama mentor berpengalaman.</p>
+                    <p class="text-[13px] text-slate-300 leading-relaxed">Melaksanakan konsultasi, penyampaian materi, dan diskusi intensif bersama mentor.</p>
                 </div>
                 <div class="bg-slate-800/80 p-6 rounded-2xl border border-slate-700">
                     <span class="text-bimbing-sky font-bold text-xl block mb-2">04</span>
@@ -417,8 +429,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="text-bimbing-blue font-bold text-sm tracking-wider uppercase">Daftar Pakar (Expert List)</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Mentor & Tenaga Ahli Profesional</h2>
-                <p class="text-slate-500 text-sm mt-3">Para praktisi dan alumni kampus ternama yang siap membimbing langkahmu.</p>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Mentor &amp; Tenaga Ahli Profesional</h2>
+                <p class="text-slate-600 text-sm mt-3">Para praktisi dan alumni kampus ternama yang siap memberikan arahan, masukan, evaluasi, serta ruang diskusi selama program berlangsung.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -572,6 +584,275 @@
         </div>
     </section>
 
+    <!-- ================= FAQ SECTION ================= -->
+    <section id="faq" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <!-- Left Intro Column -->
+                <div class="lg:col-span-4 lg:sticky lg:top-28">
+                    <span class="text-bimbing-blue font-bold text-sm tracking-wider uppercase">Frequently Asked Questions</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 leading-tight">Pertanyaan Seputar BIMBING</h2>
+                    <p class="text-slate-600 text-sm sm:text-base mt-4 leading-relaxed">
+                        Temukan jawaban lengkap mengenai program, metode personal mentoring, pelaksanaan online dan tatap muka, serta alur pendaftaran di BIMBING.
+                    </p>
+
+                    <div class="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                        <h3 class="text-sm font-bold text-slate-900 mb-2">Butuh informasi lebih lanjut?</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Kunjungi kanal resmi <span class="font-semibold text-slate-800">bimbing.my.id</span> atau hubungi tim kami untuk konsultasi program yang paling sesuai.
+                        </p>
+                        <div class="flex flex-col sm:flex-row lg:flex-col gap-2.5">
+                            <button type="button" onclick="openRegisterModal('BIMBING STUDY')" class="w-full px-4 py-2.5 bg-bimbing-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                Daftar Program Sekarang
+                            </button>
+                            <a href="#contact" class="w-full text-center px-4 py-2.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold rounded-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                Hubungi Kontak Resmi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Accordion Column -->
+                <div class="lg:col-span-8">
+                    <!-- Category Filter Tabs -->
+                    <div class="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filter kategori FAQ">
+                        <button type="button" onclick="filterFaq('all', this)" class="faq-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-bimbing-blue text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue" aria-pressed="true">
+                            Semua (12)
+                        </button>
+                        <button type="button" onclick="filterFaq('umum', this)" class="faq-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue" aria-pressed="false">
+                            Tentang &amp; Metode (6)
+                        </button>
+                        <button type="button" onclick="filterFaq('program', this)" class="faq-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue" aria-pressed="false">
+                            Program (4)
+                        </button>
+                        <button type="button" onclick="filterFaq('pendaftaran', this)" class="faq-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue" aria-pressed="false">
+                            Pendaftaran &amp; Info (2)
+                        </button>
+                    </div>
+
+                    <!-- FAQ List -->
+                    <div class="space-y-3" id="faq-list">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-slate-50/70 transition-colors" data-category="umum" data-open="true">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="true" aria-controls="faq-answer-1" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">01</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa itu BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 rotate-180 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-1" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        BIMBING merupakan platform pendampingan yang membantu individu dalam mempersiapkan pendidikan dan pengembangan karier. BIMBING hadir untuk memberikan arahan, bimbingan, serta dukungan kepada peserta dalam menentukan tujuan dan mengembangkan potensi diri. Melalui pendekatan personal, BIMBING berupaya membantu setiap individu agar lebih siap menghadapi tantangan akademik maupun dunia profesional.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="program" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-2" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">02</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa saja program yang tersedia di BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-2" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        BIMBING memiliki dua program utama, yaitu BIMBING STUDY dan BIMBING CAREER. BIMBING STUDY berfokus pada pendampingan bagi siswa yang ingin mempersiapkan diri memasuki perguruan tinggi. Sementara itu, BIMBING CAREER ditujukan bagi individu yang ingin mempersiapkan diri memasuki dunia kerja melalui pengembangan keterampilan dan perencanaan karier.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="umum" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-3" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">03</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa yang dimaksud dengan personal mentoring di BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-3" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Personal mentoring merupakan metode pendampingan yang dilakukan dengan menyesuaikan kebutuhan dan tujuan setiap peserta. Melalui metode ini, peserta mendapatkan arahan yang lebih personal dalam proses belajar maupun pengembangan diri. Pendampingan tersebut bertujuan membantu peserta memahami kemampuan yang dimiliki, mengidentifikasi kekurangan, serta menentukan langkah yang sesuai untuk mencapai tujuan mereka.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="umum" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-4" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">04</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa manfaat mengikuti program BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-4" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Mengikuti program BIMBING dapat membantu peserta memperoleh arahan yang lebih jelas dalam menentukan tujuan pendidikan maupun karier. Peserta mendapatkan pendampingan untuk mengenali potensi diri, meningkatkan kemampuan, serta mempersiapkan diri menghadapi berbagai tantangan. Dengan adanya proses mentoring, peserta diharapkan dapat menjalani persiapan secara lebih terstruktur dan sesuai dengan kebutuhan masing-masing.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="program" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-5" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">05</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Siapa saja yang dapat mengikuti program BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-5" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Program BIMBING ditujukan kepada individu yang membutuhkan pendampingan dalam mempersiapkan pendidikan maupun karier. BIMBING STUDY ditujukan bagi siswa yang ingin melanjutkan pendidikan ke perguruan tinggi, sedangkan BIMBING CAREER dapat dimanfaatkan oleh mahasiswa tingkat akhir dan lulusan baru yang ingin mempersiapkan diri memasuki dunia profesional.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="umum" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-6" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">06</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Bagaimana sistem pembelajaran atau pendampingan di BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-6" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Sistem pendampingan BIMBING dilakukan melalui pendekatan yang menyesuaikan kebutuhan peserta. Prosesnya dapat mencakup konsultasi, penyampaian materi, latihan, evaluasi, serta diskusi bersama mentor. Pendekatan ini memungkinkan peserta tidak hanya memperoleh informasi, tetapi juga memahami penerapannya sehingga dapat meningkatkan kemampuan dan kesiapan mereka secara bertahap.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 7 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="umum" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-7" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">07</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apakah program BIMBING dapat dilakukan secara online?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-7" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        BIMBING menyediakan pendampingan yang dapat disesuaikan dengan kebutuhan dan metode belajar peserta. Pelaksanaan program dapat memanfaatkan sistem online maupun pertemuan secara langsung sesuai layanan yang tersedia. Hal ini memberikan fleksibilitas bagi peserta untuk mengikuti proses pendampingan tanpa mengabaikan kebutuhan belajar dan pengembangan diri mereka.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 8 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="program" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-8" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">08</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa yang dipelajari dalam program BIMBING STUDY?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-8" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        BIMBING STUDY membantu peserta mempersiapkan diri untuk melanjutkan pendidikan ke perguruan tinggi. Pendampingan dapat mencakup strategi belajar, persiapan seleksi masuk universitas, pengembangan kemampuan akademik, serta konsultasi mengenai pilihan jurusan dan perguruan tinggi. Program ini membantu peserta memahami proses persiapan dan menentukan pilihan pendidikan yang sesuai dengan minat serta kemampuan mereka.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 9 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="program" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-9" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">09</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Apa yang dipelajari dalam program BIMBING CAREER?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-9" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        BIMBING CAREER berfokus pada pengembangan kemampuan dan kesiapan peserta dalam menghadapi dunia kerja. Pendampingan dapat mencakup persiapan CV, pengembangan portofolio, personal branding, LinkedIn, simulasi wawancara, serta pengenalan proses rekrutmen. Melalui program ini, peserta diharapkan dapat meningkatkan kepercayaan diri dan memahami kebutuhan dunia profesional.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 10 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="umum" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-10" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">10</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Siapa yang akan mendampingi peserta selama program berlangsung?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-10" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Peserta akan memperoleh pendampingan dari mentor yang berperan memberikan arahan, masukan, serta evaluasi selama proses pengembangan. Mentor membantu peserta memahami materi, mengidentifikasi hal yang perlu ditingkatkan, dan memberikan saran berdasarkan kebutuhan pendampingan. Dengan adanya mentor, peserta memiliki ruang untuk berdiskusi dan memperoleh panduan selama mengikuti program BIMBING.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 11 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="pendaftaran" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-11" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">11</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Bagaimana cara mendaftar program BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-11" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Calon peserta dapat melakukan pendaftaran melalui website resmi BIMBING dengan memilih program yang sesuai dengan kebutuhan mereka. Setelah mengisi informasi pendaftaran, calon peserta dapat mengikuti proses selanjutnya sesuai arahan tim BIMBING. Informasi mengenai program, jadwal, biaya, dan ketentuan pendaftaran dapat diperoleh melalui kanal resmi BIMBING agar calon peserta mendapatkan informasi yang sesuai.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 12 -->
+                        <div class="faq-item rounded-2xl border border-slate-200 bg-white transition-colors" data-category="pendaftaran" data-open="false">
+                            <button type="button" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-answer-12" class="w-full flex items-center justify-between gap-4 p-5 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bimbing-blue">
+                                <span class="flex items-start gap-3.5">
+                                    <span class="text-xs font-extrabold text-bimbing-blue bg-blue-100 px-2.5 py-1 rounded-lg shrink-0 mt-0.5">12</span>
+                                    <span class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Di mana calon peserta dapat memperoleh informasi lebih lanjut mengenai BIMBING?</span>
+                                </span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-500 transition-transform duration-200 shrink-0" aria-hidden="true"></i>
+                            </button>
+                            <div id="faq-answer-12" class="faq-panel">
+                                <div class="faq-panel-inner">
+                                    <p class="px-5 pb-5 pl-14 text-sm text-slate-600 leading-relaxed">
+                                        Informasi mengenai program, layanan pendampingan, serta kegiatan BIMBING dapat diperoleh melalui website resmi <a href="https://bimbing.my.id" class="font-semibold text-bimbing-blue hover:underline">bimbing.my.id</a>. Calon peserta dapat mengunjungi website tersebut untuk memahami program yang tersedia dan menentukan layanan yang sesuai dengan kebutuhan mereka. Apabila terdapat pertanyaan lebih lanjut, calon peserta dapat menghubungi kontak resmi BIMBING yang tercantum pada website.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= FOOTER / PR CONTACT ================= -->
     <footer id="contact" class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -596,6 +877,7 @@
                         <li><a href="#career" class="hover:text-white">BIMBING CAREER</a></li>
                         <li><a href="#mentors" class="hover:text-white">Daftar Pakar (Mentors)</a></li>
                         <li><a href="#pusat-media" class="hover:text-white">Media Centre</a></li>
+                        <li><a href="#faq" class="hover:text-white">FAQ BIMBING</a></li>
                     </ul>
                 </div>
 
@@ -691,10 +973,63 @@
             document.getElementById('register-modal').classList.add('hidden');
         }
 
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeRegisterModal();
+            }
+        });
+
         function handleRegistration(e) {
             e.preventDefault();
             alert('Terima kasih! Formulir pendaftaran program telah diterima. Personal Mentor BIMBING akan segera menghubungimu.');
             closeRegisterModal();
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(button) {
+            const item = button.closest('.faq-item');
+            const isOpen = item.getAttribute('data-open') === 'true';
+            const nextState = !isOpen;
+            item.setAttribute('data-open', String(nextState));
+            button.setAttribute('aria-expanded', String(nextState));
+
+            const icon = button.querySelector('.fa-chevron-down');
+            if (icon) {
+                icon.classList.toggle('rotate-180', nextState);
+            }
+            item.classList.toggle('bg-slate-50/70', nextState);
+            item.classList.toggle('bg-white', !nextState);
+        }
+
+        // FAQ Category Filter
+        function filterFaq(category, activeBtn) {
+            const buttons = document.querySelectorAll('.faq-filter-btn');
+            buttons.forEach(function(btn) {
+                const isActive = btn === activeBtn;
+                btn.setAttribute('aria-pressed', String(isActive));
+                btn.classList.toggle('bg-bimbing-blue', isActive);
+                btn.classList.toggle('text-white', isActive);
+                btn.classList.toggle('bg-slate-100', !isActive);
+                btn.classList.toggle('text-slate-700', !isActive);
+                btn.classList.toggle('hover:bg-slate-200', !isActive);
+            });
+
+            const items = document.querySelectorAll('#faq-list .faq-item');
+            let firstVisible = null;
+            items.forEach(function(item) {
+                const matches = category === 'all' || item.getAttribute('data-category') === category;
+                item.classList.toggle('hidden', !matches);
+                if (matches && !firstVisible) {
+                    firstVisible = item;
+                }
+            });
+
+            if (firstVisible) {
+                const btn = firstVisible.querySelector('button[aria-expanded]');
+                if (btn && firstVisible.getAttribute('data-open') !== 'true') {
+                    toggleFaq(btn);
+                }
+            }
         }
     </script>
 </body>
